@@ -30,7 +30,6 @@ Replace <APP_ID> with the appId you got when creating the SP.
 
 az role assignment create --assignee cb55340e-4146-4657-84ab-e72a4db93b16 --role "Directory Reader"
 az role assignment create --assignee fb78457f-7190-438e-90fc-6e6ee40285a4 --role "Directory Reader"
-
 **** Important ****
 Directory Reader permission cannot be given using az command so will need to give via UI portal
 
@@ -41,8 +40,26 @@ c)Search for Directory reader
 d)Add assignment - then search on the service principle name that you created to assign role
 -----------------------------------------------------
 
+Step 3 - go to tf-files directory and run
+terraform init
+terraform plan
+terraform apply
+
+terraform init
+# Preview what will be destroyed
+terraform plan -destroy
+# Desroy all resources in this configuration
+terraform destroy
+
+Step 4:
+Environment-Specific Variables:
+Leverage Terraform variables and .tfvars files to define environment-specific 
+values (e.g., instance sizes, region settings). This allows using the same 
+core configuration files while adapting to different environment requirements.
 
 
+ To run a specific environment go to the directory eg. dev
+ command line dev directory> terraform apply -var-file=dev.tfvars
 
 
 
